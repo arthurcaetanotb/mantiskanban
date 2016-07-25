@@ -133,9 +133,8 @@ function get_gravatar(email, size) {
 
  
 function Login() {
-	debugger;
 	log("Login() called.");
-	
+	StartLoading();
 	document.getElementById("username").focus();
 		
 	try {
@@ -145,10 +144,9 @@ function Login() {
 	} catch (e) {
 		var form = document.getElementById("loginButton");
 		$(form).before('<center><div class="alert alert-danger text-center" style="width:320px !important"><b>Error:</b> ' + e.message + '<button type="button" class="close" data-dismiss="alert">&times;</button></div><center>');
+		StopLoading();
 		return;
 	}
-
-	debugger;
 
 	DefaultSettings.connectURL = Mantis.ConnectURL;
 	saveSettingsToStorageMechanism();
