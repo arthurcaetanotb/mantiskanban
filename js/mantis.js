@@ -14,8 +14,6 @@ var Mantis = {
 	_defaultfilterid : null,
 	_closedissuesfilterid : null,
 
-	ConnectURL : "http://www.terabytesolucoes.com.br/mantis2/api/soap/mantisconnect.php",
-	
 	ClearForLogout : function() {
 		Mantis._currentprojectid = 0;
 		Mantis._currentprojectname = "";

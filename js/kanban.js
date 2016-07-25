@@ -179,9 +179,11 @@ var Kanban = {
 	},
 
 	BuildListGUI: function() {
-		for(var li = 0; li < Kanban.Lists.length; li++) {
+		var OrdemFluxoEM = [10, 50, 40, 30, 80, 90, 20]; 
 
-			var kanbanListItem = Kanban.Lists[li];
+		for(var li = 0; li < OrdemFluxoEM.length; li++) {
+
+			var kanbanListItem = ObtenhaItem(OrdemFluxoEM[li], Kanban.Lists);
 
 			var existingElement = document.getElementById("listid" + kanbanListItem.ID);
 			if(existingElement !== null) continue;
@@ -238,6 +240,18 @@ var Kanban = {
 			Kanban.Container.addEventListener('dragenter', HandleDragEnter, false);
 		}
 	}
+}
+
+function ObtenhaItem(codigo, lista){
+	
+	var item = null;
+	$.each(lista, function(k, v){
+		if(v.ID == codigo){
+			item = v;
+		}
+	});
+
+	return item;
 }
 
 function DragCancel(event) {

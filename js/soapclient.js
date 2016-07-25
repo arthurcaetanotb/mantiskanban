@@ -92,11 +92,11 @@ SOAPClientParameters._serialize = function(o)
                             case "Date":
                                 type = "DateTime"; break;
                         }
-												if(type == "Object") {
-																s += "<Object>" + SOAPClientParameters._serialize(o[p]) + "</Object>"
-												} else {
-																s += "<" + type + ">" + SOAPClientParameters._serialize(o[p]) + "</" + type + ">"
-												}
+						if(type == "Object") {
+										s += "<Object>" + SOAPClientParameters._serialize(o[p]) + "</Object>"
+						} else {
+										s += "<" + type + ">" + SOAPClientParameters._serialize(o[p]) + "</" + type + ">"
+						}
                     }
                     else    // associative array
                         s += "<" + p + ">" + SOAPClientParameters._serialize(o[p]) + "</" + p + ">"
