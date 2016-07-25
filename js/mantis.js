@@ -1,3 +1,4 @@
+
 var Mantis = {
 	_currentprojectid : 0,
 	_projectcategories : [],
@@ -13,7 +14,7 @@ var Mantis = {
 	_defaultfilterid : null,
 	_closedissuesfilterid : null,
 
-	ConnectURL : location.protocol + "//" + document.location.hostname + "/api/soap/mantisconnect.php",
+	ConnectURL : "http://www.terabytesolucoes.com.br/mantis2/api/soap/mantisconnect.php",
 	
 	ClearForLogout : function() {
 		Mantis._currentprojectid = 0;
@@ -652,6 +653,7 @@ var Mantis = {
 //   <part name="return" type="xsd:boolean" /></message>	
 
 	Login : function(UserName, Password) {
+		debugger;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Login.Name, Mantis.Methods.Login.BuildParams(UserName, Password), false, null);
 	},
 	

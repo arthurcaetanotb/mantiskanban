@@ -282,8 +282,8 @@ SOAPClient._node2object = function(node, wsdlTypes)
 			l[l.length] = SOAPClient._node2object(node.childNodes[i], wsdlTypes);
 		return l;
 	}
-	return null;
 }
+
 SOAPClient._extractValue = function(node, wsdlTypes)
 {
 	var value = node.nodeValue;

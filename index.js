@@ -133,11 +133,11 @@ function get_gravatar(email, size) {
 
  
 function Login() {
+	debugger;
 	log("Login() called.");
 	
 	document.getElementById("username").focus();
-	Mantis.ConnectURL = document.getElementById("mantisURL").value;
-	
+		
 	try {
 		var retObj = Mantis.Login(document.getElementById("username").value, document.getElementById("password").value);
 		Kanban.CurrentUser = new KanbanUser(retObj.account_data);
@@ -147,6 +147,8 @@ function Login() {
 		$(form).before('<center><div class="alert alert-danger text-center" style="width:320px !important"><b>Error:</b> ' + e.message + '<button type="button" class="close" data-dismiss="alert">&times;</button></div><center>');
 		return;
 	}
+
+	debugger;
 
 	DefaultSettings.connectURL = Mantis.ConnectURL;
 	saveSettingsToStorageMechanism();
