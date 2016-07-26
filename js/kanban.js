@@ -179,6 +179,7 @@ var Kanban = {
 	},
 
 	BuildListGUI: function() {
+
 		var OrdemFluxoEM = [10, 50, 40, 30, 80, 90, 20]; 
 
 		for(var li = 0; li < OrdemFluxoEM.length; li++) {

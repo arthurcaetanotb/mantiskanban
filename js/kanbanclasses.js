@@ -589,6 +589,7 @@ Kanban.AddStory = function(summary, description, handlerid, reporterid, statusid
 };
 
 Kanban.AddStoryAsyncCallback = function(result) {
+	debugger;
 	Kanban.BlockUpdates = false;
 	StopLoading();
 	if(isNaN(result)) {

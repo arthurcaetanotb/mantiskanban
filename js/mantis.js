@@ -651,7 +651,6 @@ var Mantis = {
 //   <part name="return" type="xsd:boolean" /></message>	
 
 	Login : function(UserName, Password) {
-		debugger;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Login.Name, Mantis.Methods.Login.BuildParams(UserName, Password), false, null);
 	},
 	

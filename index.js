@@ -379,6 +379,8 @@ function SelectProject(openStoryID) {
 
 	UpdateFilterList();
 
+	AtualizeFiltroDeStatus();
+
 	BuildKanbanListFromMantisStatuses();
 	
 	Kanban.BuildListGUI();
@@ -440,6 +442,22 @@ function UpdateFilter(filterID) {
 	SelectProject();
 }
 
+function UpdateFilterStatus(id){
+	if(id > 0){
+		$('.kanbanlist').fadeOut();
+
+		var status = $('#listid' + id);
+
+		status.fadeIn();
+		status.addClass('status-selecionado');
+		$('#kanbancontent').addClass('container-centralizado');
+	}else{
+		$('#kanbancontent').removeClass('container-centralizado');
+		$('.kanbanlist').removeClass('status-selecionado');
+		$('.kanbanlist').fadeIn();
+	}
+}
+
 function UpdateFilterList() {
 
 	log("UpdateFilterList() called.");
@@ -470,6 +488,42 @@ function UpdateFilterList() {
 
 	}
 }
+
+function AtualizeFiltroDeStatus() {
+
+	var filterList = document.getElementById("filtrarStatus");
+	var filterListArray = [{ id: 0, name: "Todos"},
+						   { id: 10, name: "Novo" },
+						   { id: 20, name: "Retorno" },
+						   { id: 30, name: "Admitido" },
+						   { id: 40, name: "Confirmado" },
+						   { id: 50, name: "Atribuído" },
+						   { id: 80, name: "Resolvido" },
+						   { id: 90, name: "Fechado" }];
+
+	while(filterList.children.length > 0) { 
+	 	filterList.removeChild(filterList.children[0]);
+	} 
+
+	for(var i = 0; i < filterListArray.length; i++) {
+	
+		var filter = filterListArray[i];
+
+		var filterItem = document.createElement("li");
+		filterItem.setAttribute("filterid", filter.id);
+
+		var filterItemLink = document.createElement("a");
+		filterItemLink.setAttribute("href", "#");
+		filterItemLink.setAttribute("filterid", filter.id);
+		filterItemLink.setAttribute("onclick", "UpdateFilterStatus(" + filter.id + ");");
+		filterItemLink.innerHTML = filter.name;
+		filterItem.appendChild(filterItemLink);
+
+		filterList.appendChild(filterItem);
+
+	}
+}
+
 
 function LoadFilterAsync(FilterID, Page, Limit, Callback) {
 	try {
@@ -613,6 +667,7 @@ function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {
 
 function CreateKanbanStoriesFromMantisIssues(obj) {
 	for(var is = 0; is < obj.length; is++) {
+		debugger;
 		Kanban.AddStoryToArray(new KanbanStory(obj[is]));
 	}
 	
